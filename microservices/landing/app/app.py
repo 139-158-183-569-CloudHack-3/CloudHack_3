@@ -19,10 +19,14 @@ def multiply(n1, n2):
 def divide(n1, n2):
     return n1/n2
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
+def homepage():
+	return render_template('index.html')
+
+@app.route('/', methods=['POST'])
 def index():
-    number_1 = request.form.get("first")
-    number_2 = request.form.get('second')
+    number_1 = int(request.form.get("first"))
+    number_2 = int(request.form.get('second'))
     operation = request.form.get('operation')
     result = 0
     if operation == 'add':
@@ -32,7 +36,10 @@ def index():
     elif operation == 'multiply':
         result = multiply(number_1, number_2)
     elif operation == 'divide':
-        result = divide(number_1, number_2)
+    	if(number_2 == 0):
+    		result = "Undefined"
+    	else:
+    		result = divide(number_1, number_2)
 
     flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')
 
