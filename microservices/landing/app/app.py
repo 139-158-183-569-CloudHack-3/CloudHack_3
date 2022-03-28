@@ -76,7 +76,15 @@ def index():
     elif operation == 'divide':
         url = f'http://division-service:5054/Divide/{number_1}/{number_2}'
         result = requests.get(url).json()['value']
-
+    elif operation == 'modulo':
+        url = f'http://modulo-service:5055/Modulo/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
+    elif operation == 'greater-than':
+        url = f'http://greater-than-service:5056/GreaterThan/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
+    elif operation == 'less-than':
+        url = f'http://less-than-service:5057/LessThan/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
     flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')
 
     return render_template('index.html')

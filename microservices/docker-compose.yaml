@@ -47,5 +47,32 @@ services:
       custom-net:
         aliases:
           - div
+  modulo-service:
+    build : ./landing/mod
+    image : modulo-service
+    ports:
+      - 5055:5055  # host:container
+    networks:
+      custom-net:
+        aliases:
+          - mod
+  greater-than-service:
+    build : ./landing/gt
+    image : greater-than-service
+    ports:
+      - 5056:5056  # host:container
+    networks:
+      custom-net:
+        aliases:
+          - gt
+  less-than-service:
+    build : ./landing/lt
+    image : less-than-service
+    ports:
+      - 5057:5057  # host:container
+    networks:
+      custom-net:
+        aliases:
+          - lt
 networks:
   custom-net:
