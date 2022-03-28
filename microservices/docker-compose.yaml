@@ -10,6 +10,42 @@ services:
       sample:
         aliases:
           - landing-service
-  # Add more services below
+  addition-service:
+    build : ./add
+    hostname : addition-service
+    ports:
+      - 5051:5051  # host:container
+    networks:
+      sample:
+        aliases:
+          - addition-service
+  # Add more services below      
+  subtraction-service:
+    build : ./sub
+    hostname : subtraction-service
+    ports:
+      - 5052:5052  # host:container
+    networks:
+      sample:
+        aliases:
+          - subtraction-service
+  multiplication-service:
+    build : ./mul
+    hostname : multiplication-service
+    ports:
+      - 5053:5053  # host:container
+    networks:
+      sample:
+        aliases:
+          - multiplication-service       
+  division-service:
+    build : ./div
+    hostname : division-service
+    ports:
+      - 5054:5054  # host:container
+    networks:
+      sample:
+        aliases:
+          - division-service
 networks:
   sample:
