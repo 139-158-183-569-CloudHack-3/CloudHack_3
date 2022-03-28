@@ -55,19 +55,27 @@ def homepage():
 
 @app.route('/', methods=['POST'])
 def index():
-    number_1 = int(request.form.get("first"))
-    number_2 = int(request.form.get('second'))
+    try :
+        number_1 = int(request.form.get("first"))
+        number_2 = int(request.form.get('second'))
+    except:
+        flash(f'Please enter valid value')
+        return render_template('index.html')
     operation = request.form.get('operation')
     result = 0
     if operation == 'add':
         url = f'http://addition-service:5051/Add/{number_1}/{number_2}'
-        result = requests.get(url)
+        result = requests.get(url).json()['value']
+        print(result)
     elif operation == 'minus':
-        result =  minus(number_1, number_2)
+        url = f'http://subtraction-service:5052/Subtract/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
     elif operation == 'multiply':
-        result = multiply(number_1, number_2)
+        url = f'http://multiplication-service:5053/Multiply/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
     elif operation == 'divide':
-        result = divide(number_1, number_2)
+        url = f'http://division-service:5054/Divide/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
 
     flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')
 

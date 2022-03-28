@@ -11,9 +11,9 @@ class Divide(Resource):
 
     def get(self, number1, number2):
         if(number2 == 0) :
-            return 'undefined';
+            return {'value' : 'undefined'}
         else :
-            return number1 / number2
+            return {'value' : number1 / number2}
 
 api.add_resource(Divide, '/Divide/<int:number1>/<int:number2>')
 

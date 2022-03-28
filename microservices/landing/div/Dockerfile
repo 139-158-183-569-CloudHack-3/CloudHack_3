@@ -11,4 +11,6 @@ RUN apk add --update \
 
 COPY ./app /app
 
-RUN python div.py
+EXPOSE 5054
+
+CMD python div.py

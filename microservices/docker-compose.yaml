@@ -3,49 +3,49 @@ version: '3.3'  # version of compose format
 services:
   landing-service:
     build: ./landing  # path is relative to docker-compose.yml location
-    hostname: landing-service
+    image: landing-service
     ports:
       - 5050:5050  # host:container
     networks:
-      sample:
+      custom-net:
         aliases:
-          - landing-service
+          - landing
   addition-service:
-    build : ./add
-    hostname : addition-service
+    build : ./landing/add
+    image : addition-service
     ports:
       - 5051:5051  # host:container
     networks:
-      sample:
+      custom-net:
         aliases:
-          - addition-service
+          - add
   # Add more services below      
   subtraction-service:
-    build : ./sub
-    hostname : subtraction-service
+    build : ./landing/sub
+    image : subtraction-service
     ports:
       - 5052:5052  # host:container
     networks:
-      sample:
+      custom-net:
         aliases:
-          - subtraction-service
+          - sub
   multiplication-service:
-    build : ./mul
-    hostname : multiplication-service
+    build : ./landing/mul
+    image : multiplication-service
     ports:
       - 5053:5053  # host:container
     networks:
-      sample:
+      custom-net:
         aliases:
-          - multiplication-service       
+          - mul
   division-service:
-    build : ./div
-    hostname : division-service
+    build : ./landing/div
+    image : division-service
     ports:
       - 5054:5054  # host:container
     networks:
-      sample:
+      custom-net:
         aliases:
-          - division-service
+          - div
 networks:
-  sample:
+  custom-net:

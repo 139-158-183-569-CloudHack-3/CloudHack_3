@@ -11,4 +11,6 @@ RUN apk add --update \
 
 COPY ./app /app
 
-RUN python app.py
+EXPOSE 5050
+
+CMD python app.py

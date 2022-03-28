@@ -10,7 +10,7 @@ app.secret_key = 'thisisjustarandomstring'
 class Subtract(Resource):
 
     def get(self, number1, number2):
-        return number1 - number2
+        return {'value' : number1 - number2}
 
 api.add_resource(Subtract, '/Subtract/<int:number1>/<int:number2>')
 

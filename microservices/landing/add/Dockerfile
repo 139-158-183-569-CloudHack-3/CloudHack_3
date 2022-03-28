@@ -11,4 +11,4 @@ RUN apk add --update \
 
 COPY ./app /app
 
-RUN python sub.py 
+CMD python app.py

@@ -7,17 +7,16 @@ app = Flask(__name__)
 api = Api(app)
 app.secret_key = 'thisisjustarandomstring'
 
-class Multiply(Resource):
+class Add(Resource):
 
     def get(self, number1, number2):
-        return number1 * number2
+        return {'value' : number1 + number2}
 
-
-api.add_resource(Multiply, '/Multiply/<int:number1>/<int:number2>')
+api.add_resource(Add, '/Add/<int:number1>/<int:number2>')
 
 if __name__ == '__main__':
     app.run(
         debug=True,
-        port=5053,
+        port=5051,
         host="0.0.0.0"
     )

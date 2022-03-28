@@ -11,4 +11,6 @@ RUN apk add --update \
 
 COPY ./app /app
 
-RUN python mul.py
+EXPOSE 5052
+
+CMD python sub.py 
