@@ -74,5 +74,23 @@ services:
       custom-net:
         aliases:
           - lt
+  newadd-service:
+    build: ./landing/newAdd  # path is relative to docker-compose.yml location
+    image: newadd-service
+    ports:
+      - 5060:5060  # host:container
+    networks:
+      custom-net:
+        aliases:
+          - newadd
+  lcm-service:
+    build: ./landing/lcm  # path is relative to docker-compose.yml location
+    image: lcm-service
+    ports:
+      - 5061:5061  # host:container
+    networks:
+      custom-net:
+        aliases:
+          - lcm
 networks:
   custom-net:

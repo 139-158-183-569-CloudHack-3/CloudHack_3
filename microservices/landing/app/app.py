@@ -85,8 +85,13 @@ def index():
     elif operation == 'less-than':
         url = f'http://less-than-service:5057/LessThan/{number_1}/{number_2}'
         result = requests.get(url).json()['value']
+    elif operation == 'newadd' :
+        url = f'http://newadd-service:5060/Multiply/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
+    elif operation == 'lcm' :
+        url = f'http://lcm-service:5061/Multiply/{number_1}/{number_2}'
+        result = requests.get(url).json()['value']
     flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')
-
     return render_template('index.html')
 
 if __name__ == '__main__':
